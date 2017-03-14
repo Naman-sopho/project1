@@ -12,20 +12,22 @@ if (mysqli_num_rows($result) == 0)
 
 <h3>Colleges in <?= $city ?></h3>
 
-<table>
-	<tr>
-		<td><em><strong>Serial No.</td>
-		<td><em><strong>College&nbsp;Name</td>
-		<td><em><strong>Location</td>
-		<td><em><strong>Number of reviews</td>
-		<td><em><strong>Facilities offered</td>
-	</tr>
-
+<table cellspacing='0'>
+	<thead>
+		<tr>
+			<th><em><strong>Serial No.</th>
+			<th><em><strong>College&nbsp;Name</th>
+			<th><em><strong>Location</th>
+			<th><em><strong>Number of reviews</th>
+			<th><em><strong>Facilities offered</th>
+		</tr>
+	</thead>
+	<tbody>
 <?php
 $i = 1;
 foreach($result as $row):
 ?>
-	<tr>
+<tr <? if($i%2 == 0) echo "class=\"even\""; ?> >
 		<td><?= $i ?></td>
 		<td><?= $row["name"] ?></td>
 		<td><?= $row["place"] ?></td>
@@ -33,16 +35,24 @@ foreach($result as $row):
 		<td>
 			<?php
    				$i++;	
-				$explode = explode(',', $row["facilities"]);
-				echo "<ul>";
-				foreach($explode as $facility)
-					echo "<li>".$facility."</li>";
+				if (!empty($row["facilities"]))
+				{
+					$explode = explode(',', $row["facilities"]);
+					echo "<ul>";
+					foreach($explode as $facility)
+						echo "<li>".$facility."</li>";
+					echo "</ul>";
+				}		
+
+				else
+				{
+					echo "No facilities to display";
+				}
 			?>
-			</ul>
 		</td>
 	</tr>
 <?php
 endforeach;
 ?>
-
+	</tbody>
 </table>

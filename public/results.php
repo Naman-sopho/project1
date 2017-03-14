@@ -55,16 +55,16 @@ else:
 endif;
 ?>
 
-	<script async>
-		//Sending POST request to processing.php
-		var url = "<?php echo $input ?>";
-        var page = "<?php echo $page ?>";
-        var city = "<?php echo $city ?>";
-        var posting = $.post("processing.php", {input_url: url, page: page, city: city});
-        posting.done(function(data) {
-            $("#replace").empty().append(data);
-			$("#loading").fadeOut();
-			$("#request").fadeOut();
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//Sending POST request to processing.php
+			var url = "<?php echo $input ?>";
+        	var page = "<?php echo $page ?>";
+      	  	var city = "<?php echo $city ?>";
+			var posting = $.post("processing.php", {input_url: url, page: page, city: city});
+        	posting.done(function(data) {
+				$("#replace").empty().append(data);
+			});
 		});
     </script>
 </head>

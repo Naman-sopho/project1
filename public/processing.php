@@ -59,11 +59,11 @@ $csv = "";
 
 foreach($matches[1] as $match)
 {
-	$regex_name = "@<h2 class=\"tuple-clg-heading\">[0-9?&_<a-z\s=\":/.-]+>(.*)</a>@i";
+	$regex_name = "@<h2 class=\"tuple-clg-heading\">[0-9?&_<a-z\s=\":/.-]+>([-a-z.\)\'\s(,\&\;]+)</a>@i";
 	preg_match($regex_name, $match, $name);
 	$names[] = $name[1];
 
-	$regex_place = "@<p>\|\s([a-z,\s]+)</p>@i";
+	$regex_place = "@<p>\|\s([a-z,\s.0-9]+)</p>@i";
 	preg_match($regex_place, $match, $place);
 	$places[] = $place[1];
 
@@ -104,13 +104,14 @@ for($i = 0; $i < sizeof($names); $i++)
 {
 	$name = $names[$i];
 	$place = $places[$i];
-	$facility = htmlspecialchars($facilities[$i]);
+	$facility = $facilities[$i];
 	$review = $reviews[$i];
-
+	$facility = preg_replace('@"@i', ' ', $facility);
+	
 	// insert only if college not already present
 	$check = "SELECT * FROM colleges WHERE name='".$name."' AND place='".$place."'";
 	$result = mysqli_query($conn, $check);
-	if(mysqli_num_rows($result) == 0):
+	if(!$result || mysqli_num_rows($result) == 0):
 	{
 		$sql = "INSERT INTO colleges VALUES ('".$city."', '".$page."', '".$name."', '".$place."', '".$facility."', '".$review."')";
 		mysqli_query($conn, $sql);
@@ -119,7 +120,7 @@ for($i = 0; $i < sizeof($names); $i++)
 	// else update number of reviews and facilities(only they are liable to change)
 	else:
 	{
-		$sql = "UPDATE colleges SET facilities='".$facility."' reviews='".$review."' WHERE name='".$name."' AND place='".$place."'";
+		$sql = "UPDATE colleges SET facilities='".$facility."', reviews='".$review."' WHERE name='".$name."' AND place='".$place."'";
 		mysqli_query($conn, $sql);
 	}
 	endif;
@@ -131,4 +132,6 @@ require("table.php");
 // close connection
 mysqli_close($conn);
 
+// to go to different pages of a city
+require("pages.php");
 ?>
