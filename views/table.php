@@ -1,6 +1,6 @@
 <?php
 $query = "SELECT * FROM colleges WHERE city='{$city}' AND page_no='{$page}'";
-$result = mysqli_query($conn, $query);
+$result = query($conn, $query);
 
 // check if query returned any rows
 if (mysqli_num_rows($result) == 0)
@@ -56,3 +56,4 @@ endforeach;
 ?>
 	</tbody>
 </table>
+<br>
