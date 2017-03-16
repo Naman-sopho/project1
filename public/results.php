@@ -3,7 +3,7 @@
 <?php
 require ("../includes/helpers.php");
 
-render_once("../views/header.php", ["title" => "|Results"]);
+render("../views/header.php", ["title" => "|Results"]);
 // check if a city or a URL is entered
 $input = "";
 if (filter_var($_POST["input_url"], FILTER_VALIDATE_URL)):
@@ -45,7 +45,7 @@ elseif (!empty($matches[6]) && !empty($matches[7]) && !empty($matches[8])):
 else:
     {
          echo ("<h3>Please enter a valid URL.</h3><br />
-               "Click <a href=\"index.php\">here</a> to go back.");
+               Click <a href=\"index.php\">here</a> to go back.");
          die();
     }
 endif;
