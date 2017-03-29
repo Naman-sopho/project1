@@ -4,6 +4,7 @@
 require ("../includes/helpers.php");
 
 render("../views/header.php", ["title" => "|Results"]);
+
 // check if a city or a URL is entered
 $input = "";
 if (filter_var($_POST["input_url"], FILTER_VALIDATE_URL)):

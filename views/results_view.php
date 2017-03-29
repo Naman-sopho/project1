@@ -15,6 +15,9 @@
 
 </script>
 
+<a href="index.php">Search for colleges in another city</a>
+</div>
+
 <div id="replace">
 	<h4 id="request">You requested for colleges in
 		<?php echo($city); ?> </h4>

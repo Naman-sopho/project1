@@ -6,5 +6,8 @@
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<title><?= $title ?></title>
 </head>
-<body>
-<img name="logo" src="img/index.png"><br><br>
+<body background="/img/background.jpg">
+<div class="container">
+	<div class="fixed">
+		<img name="logo" src="img/index.png" align="left">
+	
