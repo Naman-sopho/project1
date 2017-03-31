@@ -30,7 +30,7 @@ $resp = curl_exec($curl);
 // Check for errors in curl req
 
 if (!$resp):
-    die("Error:" . curl_error($curl) . "Error-Code:" . curl_errno($curl));
+    apologize("Error:" . curl_error($curl) . "Error-Code:" . curl_errno($curl));
 else:
     // Close request
     curl_close($curl);
@@ -86,32 +86,27 @@ foreach($matches[1] as $match)
     }
 
     // connect to database
-
     $conn = database_connect();
 
     // check for successfull connection
-
-    if (!$conn) die("Connection Error: " . mysqli_connect_error());
+    if (!$conn) apologize("Connection Error: " . mysqli_connect_error());
 
     // populate database
-
     for ($i = 0; $i < sizeof($names); $i++)
     {
         $name = $names[$i];
-
         // sanitize name before entering into database
-
         $name = preg_replace("@\'@", "''", $name);
-        $place = $places[$i];
+        
+	$place = $places[$i];
+
         $facility = $facilities[$i];
-
         // sanitize facilities before entering into database
-
         $facility = preg_replace('@"@i', ' ', $facility);
+
         $review = $reviews[$i];
 
         // insert only if college not already present
-
         $check = "SELECT * FROM colleges WHERE name='" . $name . "' AND place='" . $place . "'";
         $result = query($conn, $check);
         if (!$result || mysqli_num_rows($result) == 0):
@@ -121,7 +116,6 @@ foreach($matches[1] as $match)
             }
 
             // else update number of reviews and facilities(only they are liable to change)
-
             else:
                 {
                     $sql = "UPDATE colleges SET facilities='" . $facility . "', reviews='" . $review . "' WHERE name='" . $name . "' AND place='" . $place . "'";
@@ -132,15 +126,12 @@ foreach($matches[1] as $match)
         }
 
         // render colleges table
-
         require ("../views/table.php");
 
         // close connection
-
         mysqli_close($conn);
 
         // to go to different pages of a city
-
         require ("pages.php");
 
 ?>

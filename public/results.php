@@ -45,7 +45,7 @@ elseif (!empty($matches[6]) && !empty($matches[7]) && !empty($matches[8])):
 // invalid URL entered
 else:
     {
-         echo ("<h3>Please enter a valid URL.</h3><br />
+         apologize ("<h3>Please enter a valid URL or City name.</h3><br />
                Click <a href=\"index.php\">here</a> to go back.");
          die();
     }

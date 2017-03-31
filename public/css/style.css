@@ -4,22 +4,23 @@
 	margin-right: auto;
 }
 
-
-
 body
 {
 	z-index: 1;
 	height:100%;
 }
 
-
-
-ul {
-  list-style-type: none;
+.container {
+	position: relative;
+	top: 100px;
 }
 
-#replace:not(a), #replace:not(img) {
-	position: relative; top:100px;
+ul {
+  list-style-type: circle;
+}
+
+li {
+	text-align: left;
 }
 
 .fixed {
@@ -59,8 +60,9 @@ ul {
 
 .fixed img {
 	padding-left: 15px;
-	padding-top: 5px;
+	padding-top: 2px;
 }
+
 
 table {
 	z-index: 0;
@@ -202,13 +204,11 @@ table tr:hover td {
 }
 
 .form{
-	position: relative; top:100px;
 	display: block;
     max-width: 500px;
     padding: 10px 20px;
     background: #f4f7f8;
-    margin: 10px auto;
-	padding: 20px;
+    margin: 25px auto;
     background: #f4f7f8;
     border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;

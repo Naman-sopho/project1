@@ -12,7 +12,7 @@ if (mysqli_num_rows($result) == 0)
 
 <h3>Colleges in <?= $city ?></h3>
 
-<table cellspacing='0'>
+<table id="header-fixed" cellspacing='0'>
 	<thead>
 		<tr>
 			<th><em><strong>Serial No.</th>

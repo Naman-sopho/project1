@@ -7,11 +7,9 @@ function apologize($message)
     die();
 }
 
-/**
- * Redirects user to location, which can be a URL or
- * a relative path on the local host.
- */
 
+//Redirects user to location, which can be a URL or
+//a relative path on the local host.
 function redirect($location)
 {
     if (headers_sent($file, $line))
@@ -23,10 +21,8 @@ function redirect($location)
     exit;
 }
 
-/**
- * Renders view, passing in values.
- */
 
+//Renders view, passing in values.
 function render($view, $values = [])
 {
 
@@ -50,6 +46,7 @@ function render($view, $values = [])
     }
 }
 
+
 function database_connect()
 {
     $servername = "localhost";
@@ -66,14 +63,15 @@ function database_connect()
     return $conn;
 }
 
+
 function query($conn, $string)
 {
     $result = mysqli_query($conn, $string);
     return $result;
 }
 
-// converts array to csv format
 
+// converts array to csv format
 function str_putcsv($data)
 {
 
@@ -92,6 +90,20 @@ function str_putcsv($data)
     $csv = stream_get_contents($fh);
     fclose($fh);
     return $csv;
+}
+
+// sanitizes user input for html or sql
+function sanitize($target, $lang)
+{
+	$result = "";		
+	
+	$conn = database_connect();
+	if($lang === "sql")
+		$result = mysqli_real_escape_string($conn, $target);
+	else if($lang === "html")
+		$result = htmlspecialchars($target);
+	
+	return $result;
 }
 
 ?>
