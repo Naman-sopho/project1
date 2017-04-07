@@ -48,12 +48,12 @@ $csv = "";
 
 foreach($matches[1] as $match)
 {
-    $regex_name = "@<h2 class=\"tuple-clg-heading\">[0-9?&_<a-z\s=\":/.-]+>([-a-z.\)\'\s(,\&\;']+)</a>@i";
+    $regex_name = "@<h2 class=\"tuple-clg-heading\">[0-9?&_<a-z\s=\":/.-]+>([-a-z.\)\'\s(,\&\;':]+)</a>@i";
     preg_match($regex_name, $match, $name);
     if (!empty($name)) 
         $names[] = $name[1];
     
-    $regex_place = "@<p>\|\s([a-z,\s.0-9)(]+)</p>@i";
+    $regex_place = "@<p>\|\s([a-z,\s.0-9-)(]+)</p>@i";
     preg_match($regex_place, $match, $place);
     if (!empty($place)) 
         $places[] = $place[1];

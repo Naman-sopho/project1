@@ -32,13 +32,13 @@ elseif (!empty($matches[2]) && !empty($matches[3])):
 // if a two word city is entered
 elseif (!empty($matches[4]) && !empty($matches[5])):
     {
-        $city = ucfirst($matches[4]) . " " . ucfirst($matches[5]);
+        $city = ucfirst($matches[4]) . "-" . ucfirst($matches[5]);
     }
 
 // if a two word city + page no. is entered
 elseif (!empty($matches[6]) && !empty($matches[7]) && !empty($matches[8])):
     {
-        $city = ucfirst($matches[6]) . " " . ucfirst($matches[7]);
+        $city = ucfirst($matches[6]) . "-" . ucfirst($matches[7]);
         $page = $matches[8];
     }
 
