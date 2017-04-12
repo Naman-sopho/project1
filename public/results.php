@@ -13,7 +13,7 @@ else:
     $input = "http://www.shiksha.com/b-tech/colleges/b-tech-colleges-" . strtolower($_POST["input_url"]);
 endif;
 // Matching city name and page number
-preg_match('/colleges-([a-z]+)$|colleges-([a-z]+)-([\d+])|colleges-([a-z]+)-([a-z]+)$|colleges-([a-z]+)-([a-z]+)-([\d]+)/i', $input, $matches);
+preg_match('/colleges-([a-z]+)$|colleges-([a-z]+)-([\d]+)|colleges-([a-z]+)-([a-z]+)$|colleges-([a-z]+)-([a-z]+)-([\d]+)/i', $input, $matches);
 $city = "";
 $page = 1;
 // if a one word city is entered
