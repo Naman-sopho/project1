@@ -49,10 +49,10 @@ function render($view, $values = [])
 
 function database_connect()
 {
-    $servername = "localhost";
-    $dbname = "colleges";
-    $username = "admin";
-    $password = "123456789";
+    $servername = "127.0.0.1";
+    $dbname = "project1";
+    $username = "namantiwari";
+    $password = "zrrJ8zNEdpuTwuty";
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if (!$conn)
     {

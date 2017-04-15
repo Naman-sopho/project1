@@ -8,9 +8,9 @@
 		//Sending POST request to processing.php
 		var posting = $.post("processing.php", {input_url: url, page: page, city: city});
 
-		posting.done(function(data) {
+		setTimeout(posting.done(function(data) {
 			$("#replace").empty().append(data);
-		});
+		}), 1000);
 	});
 
 </script>

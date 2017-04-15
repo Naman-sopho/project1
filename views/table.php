@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) == 0)
 $i = 1;
 foreach($result as $row):
 ?>
-<tr <? if($i%2 == 0) echo "class=\"even\""; ?> >
+<tr <?php if($i%2 == 0) echo "class=\"even\""; ?> >
 		<td><?= $i ?></td>
 		<td><?= $row["name"] ?></td>
 		<td><?= $row["place"] ?></td>
