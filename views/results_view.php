@@ -10,7 +10,7 @@
 
 		setTimeout(posting.done(function(data) {
 			$("#replace").empty().append(data);
-		}), 1000);
+		}), 3000);
 	});
 
 </script>
