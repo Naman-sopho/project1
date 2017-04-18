@@ -32,6 +32,9 @@ How to use in CS50 IDE:
 1. Start the webserver(with project1/public as root) by typing the following in the terminal window,
     apache50 start project1/public
     
+   Start the mysql database by entering the following in the command window
+    mysql50 start
+    
 2. Enter the following address in your browser to visit the website.
     https://project-1-namantiwari.c9users.io
 
